@@ -215,13 +215,10 @@ The server can be deployed to:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👥 Authors
 
-- Your Name - Initial work
+- baldhydra
 
 ## 🙏 Acknowledgments
 
@@ -229,9 +226,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Recharts for data visualization
 - Express.js community for the backend framework
 
-## 📞 Support
 
-For support and questions, please open an issue in the GitHub repository or contact the development team.
 
 ---
 
