@@ -133,6 +133,16 @@ async function main() {
     console.log('='.repeat(64));
     console.log('   Press Ctrl+C to stop all servers at once.\n');
 
+    // Automatically open browser after servers initialize
+    setTimeout(() => {
+      const openCmd = isWindows ? 'start' : process.platform === 'darwin' ? 'open' : 'xdg-open';
+      try {
+        spawn(openCmd, ['http://localhost:5173/ai-chat'], { shell: true, stdio: 'ignore' });
+      } catch (e) {
+        // ignore
+      }
+    }, 2000);
+
     // Handle graceful shutdown
     const cleanup = () => {
       console.log('\n🛑 Shutting down all services...');
