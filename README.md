@@ -18,8 +18,8 @@ ollama pull qwen3:8b
 
 ### 3. Clone and Run (Single Command!)
 ```bash
-git clone https://github.com/baldhydra/pollution-new.git
-cd pollution-new
+git clone https://github.com/baldhydra/pollution-testing-new-with-ai.git
+cd pollution-testing-new-with-ai
 npm start
 ```
 

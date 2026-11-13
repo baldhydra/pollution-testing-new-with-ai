@@ -1,7 +1,7 @@
 {
-  "name": "pollution-center-system",
+  "name": "pollution-testing-new-with-ai",
   "version": "1.0.0",
-  "description": "Pollution Center Data Management System with Local Qwen3 8B AI Assistant",
+  "description": "Full-stack vehicle pollution certificate management system with local Ollama Qwen 3 (8B) AI data assistant, chat history, PDF export, and one-click launcher",
   "type": "module",
   "private": true,
   "scripts": {
