@@ -1,0 +1,26 @@
+{
+  "name": "pollution-center-system",
+  "version": "1.0.0",
+  "description": "Pollution Center Data Management System with Local Qwen3 8B AI Assistant",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "setup": "node setup.js",
+    "postinstall": "node setup.js",
+    "start": "node run.js",
+    "dev": "node run.js",
+    "build": "npm --prefix pollution-center run build",
+    "backend": "node pollution-center/server/server.js",
+    "frontend": "npm --prefix pollution-center run dev"
+  },
+  "keywords": [
+    "pollution-management",
+    "react",
+    "express",
+    "ollama",
+    "qwen3",
+    "local-ai"
+  ],
+  "author": "baldhydra",
+  "license": "ISC"
+}

@@ -6,6 +6,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 import { useSidebar } from '../context/SidebarContext';
 
 const navItems = [
@@ -13,6 +14,7 @@ const navItems = [
   { label: "New Entry", path: "/entry", icon: <AddBoxIcon /> },
   { label: "Reports & Export", path: "/reports", icon: <AssessmentIcon /> },
   { label: "Overview", path: "/overview", icon: <BarChartIcon /> },
+  { label: "AI Assistant", path: "/ai-chat", icon: <SmartToyIcon /> },
 ];
 
 const Sidebar = () => {

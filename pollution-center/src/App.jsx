@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import NewEntry from './components/NewEntry';
 import Reports from './components/Reports';
 import Overview from './components/Overview';
+import AiChat from './components/AiChat';
 import { SidebarProvider } from './context/SidebarContext';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/entry" element={<NewEntry />} />
         <Route path="/reports" element={<Reports />} />
         <Route path="/overview" element={<Overview />} />
+        <Route path="/ai-chat" element={<AiChat />} />
       </Routes>
     </SidebarProvider>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getUsers, createUser } from '../services/api';
+import { getUsers, createUser, loginUser } from '../services/api';
 
 const CURRENT_USER_KEY = 'pollution_current_user';
 
@@ -46,6 +46,11 @@ const Login = () => {
           return;
         }
         setCurrentUser(username);
+        try {
+          await loginUser(username, password);
+        } catch (authErr) {
+          console.warn('Could not acquire auth token automatically:', authErr);
+        }
         window.location.href = '/dashboard';
       } else {
         // Create account validation
@@ -68,6 +73,11 @@ const Login = () => {
         // Save new user
         await createUser({ username, password });
         setCurrentUser(username);
+        try {
+          await loginUser(username, password);
+        } catch (authErr) {
+          console.warn('Could not acquire auth token automatically:', authErr);
+        }
         window.location.href = '/dashboard';
       }
     } catch (error) {

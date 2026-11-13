@@ -3,6 +3,8 @@ import cors from 'cors';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { loginHandler } from './middleware/auth.js';
+import aiRouter from './routes/ai.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,6 +30,12 @@ if (!fs.existsSync(USERS_FILE)) {
 
 app.use(cors());
 app.use(express.json());
+
+// Auth endpoint
+app.post('/api/auth/login', loginHandler);
+
+// AI Assistant routes
+app.use('/api/ai', aiRouter);
 
 // Get all vehicle data
 app.get('/api/vehicles', (req, res) => {
@@ -94,12 +102,10 @@ app.post('/api/users', (req, res) => {
 app.delete('/api/users', (req, res) => {
   try {
     const { username } = req.body;
-    // Remove user from users list
     const users = fs.readJsonSync(USERS_FILE);
     const newUsers = users.filter(u => u.username !== username);
     fs.writeJsonSync(USERS_FILE, newUsers);
     
-    // Remove user's vehicle data
     const vehicleData = fs.readJsonSync(VEHICLE_DATA_FILE);
     const newVehicleData = vehicleData.filter(d => d.username !== username);
     fs.writeJsonSync(VEHICLE_DATA_FILE, newVehicleData);
@@ -110,6 +116,18 @@ app.delete('/api/users', (req, res) => {
   }
 });
 
+// Serve production static frontend if built
+const DIST_DIR = path.join(__dirname, '..', 'dist');
+if (fs.existsSync(DIST_DIR)) {
+  app.use(express.static(DIST_DIR));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(DIST_DIR, 'index.html'));
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-}); 
+});
